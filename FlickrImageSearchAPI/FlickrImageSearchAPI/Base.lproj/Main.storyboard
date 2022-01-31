@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="FlickrImageSearchAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BT7-9K-8Sm">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yNe-sU-ejk">
+                                <rect key="frame" x="0.0" y="95" width="414" height="0.0"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Lu-lE-DOZ" customClass="CustomLoader" customModule="FlickrImageSearchAPI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="X1j-e8-etz"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2Lu-lE-DOZ" secondAttribute="trailing" id="RJX-9u-RxR"/>
+                                    <constraint firstItem="2Lu-lE-DOZ" firstAttribute="top" secondItem="yNe-sU-ejk" secondAttribute="top" id="Xn5-qt-8aL"/>
+                                    <constraint firstItem="2Lu-lE-DOZ" firstAttribute="leading" secondItem="yNe-sU-ejk" secondAttribute="leading" id="m93-95-Gvb"/>
+                                </constraints>
+                            </stackView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="37s-OR-cw0">
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="chV-xE-Ea9">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yNe-sU-ejk" firstAttribute="top" secondItem="BT7-9K-8Sm" secondAttribute="bottom" id="4mB-XM-dnT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="37s-OR-cw0" secondAttribute="bottom" id="HTi-bM-7e3"/>
+                            <constraint firstItem="37s-OR-cw0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N1X-8P-Ubr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="37s-OR-cw0" secondAttribute="trailing" id="bed-rJ-FB8"/>
+                            <constraint firstItem="37s-OR-cw0" firstAttribute="top" secondItem="yNe-sU-ejk" secondAttribute="bottom" id="hEc-AL-8jG"/>
+                            <constraint firstItem="BT7-9K-8Sm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iek-Vg-OHF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BT7-9K-8Sm" secondAttribute="trailing" id="rNa-uU-i9O"/>
+                            <constraint firstItem="yNe-sU-ejk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="s7P-Hc-xtC"/>
+                            <constraint firstItem="yNe-sU-ejk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tgZ-mu-1zc"/>
+                            <constraint firstItem="BT7-9K-8Sm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wD6-u9-tfg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="flickrImageCollectionView" destination="37s-OR-cw0" id="WsA-Y3-cWn"/>
+                        <outlet property="loadingView" destination="2Lu-lE-DOZ" id="58S-bA-TiF"/>
+                        <outlet property="querySearchBar" destination="BT7-9K-8Sm" id="nv5-kz-Lv5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.637681159420293" y="79.6875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
